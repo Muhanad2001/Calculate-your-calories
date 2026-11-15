@@ -1,1 +1,236 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050b19">
+<title>MH | منصة فحص وتشخيص السيارات</title>
+<style>
+:root{--bg:#050b19;--panel:#0b1630;--panel2:#0e1d3b;--line:#1b3b6c;--cyan:#19dfff;--blue:#168cff;--violet:#a84cff;--red:#ff3f62;--green:#36e57b;--text:#f7fbff;--muted:#9db1d1}
+*{box-sizing:border-box}html,body{margin:0;background:radial-gradient(circle at 50% 0,#102b57 0,#071127 34%,#030813 100%);color:var(--text);font-family:Arial,"Tahoma",sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent 35%,#20dfff08 50%,transparent 65%)}
+button,input{font:inherit}.app{max-width:1280px;margin:auto;min-height:100vh;padding:18px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.iconbtn{width:48px;height:48px;border:1px solid #31517d;background:#071327;color:#fff;border-radius:15px;font-size:24px;box-shadow:0 0 25px #08bfff12}
+.brand{text-align:center;flex:1}.logo{font-weight:900;font-size:58px;line-height:.9;letter-spacing:-5px;font-style:italic;background:linear-gradient(180deg,#fff,#7e91ac);-webkit-background-clip:text;color:transparent;text-shadow:0 0 25px #19dfff55;position:relative;display:inline-block}.logo:after{content:"";position:absolute;left:3%;right:-4%;bottom:-6px;height:5px;border-radius:99px;background:linear-gradient(90deg,#1bdfff,#b94dff,#1bdfff);transform:skewX(-25deg)}
+.brand h1{font-size:25px;margin:14px 0 4px}.brand p{margin:0;color:#b6c7e4;font-size:14px}
+.nav{display:flex;gap:8px;margin:20px 0 14px;overflow:auto}.nav button{min-width:150px;padding:13px 16px;background:linear-gradient(180deg,#0d1c38,#091429);border:1px solid #264a77;border-radius:12px;color:#dceaff;font-weight:800}.nav button.active{background:linear-gradient(90deg,#0879e8,#16d7ff);color:#00101b;border-color:#6aeaff;box-shadow:0 0 30px #00d9ff55}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;background:linear-gradient(135deg,#09152d,#061022);border:1px solid #1b477b;border-radius:22px;padding:20px;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:420px;height:420px;left:-180px;top:-220px;background:#1de1ff18;border-radius:50%;filter:blur(40px)}
+.obd{display:flex;align-items:center;justify-content:center;min-height:270px;position:relative}.scanner{width:250px;height:145px;border-radius:23px;background:linear-gradient(145deg,#111,#20262d);border:8px solid #ef313c;box-shadow:0 0 45px #ff2f4d44, inset 0 0 30px #000}.scanner .screen{height:100%;border:1px solid #777;border-radius:12px;padding:15px;background:#090b0d}.scanner b{font-size:24px}.wifi{color:#20eaff;margin-top:12px}.car{font-size:120px;text-align:center;filter:drop-shadow(0 0 22px #20dfff);line-height:1}.hero h2{font-size:28px;margin:10px 0}.hero p{color:#a9bfdf}.connect{display:flex;align-items:center;justify-content:space-between;gap:15px;background:#07152d;border:1px solid #245182;border-radius:17px;padding:15px}.online{color:#39ef7d;font-weight:900}.mainbtn{border:1px solid #7cecff;background:linear-gradient(90deg,#087cf1,#18dcff);color:#00131b;border-radius:13px;padding:14px 22px;font-weight:900;box-shadow:0 0 24px #00cfff33}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:15px}.metric{background:linear-gradient(145deg,#0a1730,#091225);border:1px solid #1d4878;border-radius:16px;padding:16px;min-height:105px}.metric small{color:#a8bfdf}.metric strong{font-size:27px;display:block;margin-top:9px}.metric .unit{font-size:13px;color:#8fa6c8}.progress{height:5px;background:#182c4b;border-radius:9px;margin-top:12px}.progress i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#19dfff,#2488ff)}
+.dashboard{display:grid;grid-template-columns:1.5fr .8fr;gap:15px;margin-top:15px}.panel{background:linear-gradient(145deg,#08142d,#071020);border:1px solid #1d4878;border-radius:18px;padding:18px}.panel h3{margin:0 0 14px;font-size:22px}.rpm{height:330px;display:flex;align-items:center;justify-content:center;position:relative}.gauge{width:280px;height:280px;border-radius:50%;background:conic-gradient(from 220deg,#13e8ff 0 32%,#4d63ff 32% 55%,#b34cff 55% 75%,#e63862 75% 83%,#13233d 83% 100%);padding:12px;box-shadow:0 0 55px #11cfff44}.gaugein{height:100%;border-radius:50%;background:radial-gradient(circle,#122646 0,#071022 68%,#050a15 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid #2c4d78}.gaugein small{color:#a8bfdf}.gaugein b{font-size:58px}.gaugein span{color:#8fa7ca}.side{display:grid;gap:12px}.side .metric{min-height:94px}.dtc{margin-top:15px;display:grid;grid-template-columns:1.2fr .8fr;gap:15px}.fault{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #294a70;background:#0b1831;border-radius:13px;padding:13px;margin:9px 0}.code{font-size:20px;font-weight:900;color:#ff5268}.desc{color:#d5e2f5;font-size:14px}.health{display:grid;gap:9px}.healthrow{display:flex;justify-content:space-between;padding:11px 12px;background:#09162c;border:1px solid #193d65;border-radius:11px}.ok{color:#43ed82}.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.actions button{padding:15px;border-radius:13px;border:1px solid #28517e;background:#0a1730;color:#dbeaff;font-weight:800}.actions .primary{background:linear-gradient(90deg,#087cf1,#17dcff);color:#00131b}.actions .danger{border-color:#813243;color:#ff7184}.footer{display:flex;justify-content:space-between;color:#7790b6;font-size:12px;padding:16px 4px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0c1d39;border:1px solid #2c5b8f;border-radius:12px;padding:12px 18px;display:none;z-index:9}.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modalbox{max-width:500px;width:100%;background:#0b1730;border:1px solid #2c5c91;border-radius:18px;padding:20px}.modalbox input{width:100%;margin:7px 0 12px;padding:12px;background:#071126;color:#fff;border:1px solid #294d79;border-radius:10px}.modalbox .row{display:flex;gap:10px}.modalbox button{flex:1;padding:12px;border-radius:10px;border:1px solid #2d5c8c;background:#0e2141;color:#fff}.modalbox .save{background:#16c9ef;color:#00121a}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.dashboard,.dtc{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}.actions{grid-template-columns:repeat(2,1fr)}.logo{font-size:46px}}
+@media(max-width:520px){.app{padding:10px}.brand h1{font-size:19px}.brand p{font-size:11px}.hero{padding:13px}.scanner{width:210px;height:123px}.car{font-size:82px}.metrics{grid-template-columns:repeat(2,1fr);gap:8px}.metric{padding:12px;min-height:92px}.metric strong{font-size:21px}.gauge{width:230px;height:230px}.gaugein b{font-size:46px}.nav button{min-width:125px}.actions{grid-template-columns:1fr 1fr}.footer{flex-direction:column;gap:8px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+<button class="iconbtn" onclick="toast('القائمة الرئيسية')">☰</button>
+<div class="brand">
+<div class="logo">MH</div>
+<h1>منصة فحص السيارات</h1>
+<p>فحص الأعطال وقراءة بيانات السيارة عبر OBD-II</p>
+</div>
+<button class="iconbtn" onclick="openSettings()">⚙</button>
+</header>
 
+<nav class="nav">
+<button class="active">الرئيسية</button><button onclick="scrollToEl('live')">البيانات الحية</button><button onclick="scrollToEl('dtc')">فحص الأعطال (DTC)</button><button onclick="toast('معلومات السيارة')">معلومات السيارة 🚗</button><button onclick="toast('التقارير')">التقارير</button>
+</nav>
+
+<section class="hero">
+<div>
+<div class="obd"><div class="scanner"><div class="screen"><b>OBD SCAN</b><div style="font-size:11px;margin-top:6px">KINGBOLEN</div><div class="wifi">⌁ WiFi</div><div style="font-size:10px;color:#aaa;margin-top:15px">OBDII DIAGNOSTIC INTERFACE</div></div></div></div>
+</div>
+<div style="display:flex;flex-direction:column;justify-content:center">
+<div class="car">🚘</div>
+<h2>فحص وتشخيص احترافي</h2><p>واجهة MH مصممة للعمل مع قطع OBD-II Wi-Fi المتوافقة مع ELM327.</p>
+<div class="connect"><div><div class="online">● متصل</div><small style="color:#a4bad8">KINGBOLEN OBD SCAN (ELM327)</small><div style="font-size:12px;color:#7690b4;margin-top:4px" id="ipText">192.168.0.10:35000</div></div><button class="mainbtn" onclick="openConnect()">توصيل القطعة 📶</button></div>
+</div>
+</section>
+
+<section id="live" class="metrics">
+<div class="metric"><small>السرعة</small><strong id="speed">78</strong><span class="unit">كم/س</span><div class="progress"><i style="width:62%"></i></div></div>
+<div class="metric"><small>درجة حرارة المحرك</small><strong id="temp">92</strong><span class="unit">°C</span><div class="progress"><i style="width:70%"></i></div></div>
+<div class="metric"><small>جهد البطارية</small><strong id="volt">14.2</strong><span class="unit">V</span><div class="progress"><i style="width:82%"></i></div></div>
+<div class="metric"><small>نسبة الخانق (Throttle)</small><strong id="throttle">26</strong><span class="unit">%</span><div class="progress"><i style="width:26%"></i></div></div>
+<div class="metric"><small>تدفق الهواء (MAF)</small><strong id="maf">12.8</strong><span class="unit">g/s</span><div class="progress"><i style="width:48%"></i></div></div>
+<div class="metric"><small>ضغط الهواء (MAP)</small><strong id="map">98</strong><span class="unit">kPa</span><div class="progress"><i style="width:66%"></i></div></div>
+</section>
+
+<section class="dashboard">
+<div class="panel">
+<h3>عداد دورات المحرك — RPM</h3>
+<div class="rpm"><div class="gauge"><div class="gaugein"><small>RPM</small><b id="rpm">2340</b><span>دورة / دقيقة</span><div style="margin-top:10px;color:#17dfff">♧</div></div></div></div>
+</div>
+<div class="panel">
+<h3>حالة الأنظمة</h3>
+<div class="side">
+<div class="healthrow"><span>نظام OBD-II</span><b class="ok">✓ جاهز</b></div>
+<div class="healthrow"><span>المحرك</span><b class="ok">✓</b></div>
+<div class="healthrow"><span>ناقل الحركة</span><b class="ok">✓</b></div>
+<div class="healthrow"><span>الانبعاثات</span><b class="ok">✓</b></div>
+<div class="healthrow"><span>حساسات الأكسجين</span><b class="ok">✓</b></div>
+<div class="healthrow"><span>نظام الوقود</span><b class="ok">✓</b></div>
+</div>
+</div>
+</section>
+
+<section id="dtc" class="dtc">
+<div class="panel">
+<h3>أكواد الأعطال (DTC) <span style="color:#ff5570;font-size:14px">عدد الأكواد: <b id="count">2</b></span></h3>
+<div id="faults">
+<div class="fault"><div><div class="desc">خلل في الاشتعال العشوائي / متعدد الأسطوانات</div><small style="color:#8299b8">Random/Multiple Cylinder Misfire</small></div><div class="code">P0300</div></div>
+<div class="fault"><div><div class="desc">كفاءة منخفضة في نظام المحول الحفاز</div><small style="color:#8299b8">Catalyst System Efficiency Below Threshold</small></div><div class="code">P0420</div></div>
+</div>
+</div>
+<div class="panel">
+<h3>الفحص السريع</h3>
+<div class="health">
+<div class="healthrow"><span>حالة المحرك</span><b class="ok">جيدة</b></div>
+<div class="healthrow"><span>حالة الحركة</span><b class="ok">جيدة</b></div>
+<div class="healthrow"><span>نظام الانبعاثات</span><b class="ok">جيد</b></div>
+<div class="healthrow"><span>الوقود</span><b class="ok">جيد</b></div>
+</div>
+</div>
+</section>
+
+<div class="actions">
+<button onclick="scan()">🔎 فحص الأعطال</button>
+<button onclick="liveData()">〽 البيانات الحية</button>
+<button class="danger" onclick="clearCodes()">🗑 مسح الأكواد</button>
+<button class="primary" onclick="report()">📄 تقرير الفحص</button>
+</div>
+
+<footer class="footer"><span>◉ KINGBOLEN OBD SCAN — ELM327 Wi-Fi</span><b>MH</b><span>OBD-II Diagnostic Platform v1.0</span></footer>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="modal" id="connectModal"><div class="modalbox"><h3>إعداد اتصال OBD</h3><label>IP القطعة</label><input id="host" value="192.168.0.10"><label>Port</label><input id="port" value="35000"><div class="row"><button onclick="closeModal()">إلغاء</button><button class="save" onclick="saveConnect()">حفظ الاتصال</button></div><p style="color:#8ea7c9;font-size:12px;line-height:1.7">القيم الافتراضية شائعة لبعض قطع ELM327 Wi-Fi، وقد تختلف حسب إصدار قطعتك.</p></div></div>
+
+<script>
+let ws=null, polling=false, connected=false, demo=false;
+const $=id=>document.getElementById(id);
+
+function toast(t){
+  const e=$('toast'); e.textContent=t; e.style.display='block';
+  clearTimeout(window.tt); window.tt=setTimeout(()=>e.style.display='none',2200);
+}
+function scrollToEl(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function openConnect(){document.getElementById('connectModal').style.display='flex'}
+function closeModal(){document.getElementById('connectModal').style.display='none'}
+function openSettings(){openConnect()}
+
+function setOnline(ok){
+  const el=document.querySelector('.online');
+  if(!el)return;
+  el.textContent=ok?'● متصل':'● غير متصل';
+  el.style.color=ok?'#39ef7d':'#ff5268';
+}
+function saveConnect(){
+  const h=$('host').value.trim(), p=$('port').value.trim();
+  $('ipText').textContent=h+':'+p;
+  closeModal();
+  connectBridge(h,Number(p||35000));
+}
+
+function connectBridge(host,port){
+  demo=false;
+  if(ws){try{ws.close()}catch(e){}}
+  toast('جاري الاتصال بجسر OBD...');
+  ws=new WebSocket('ws://127.0.0.1:8765');
+  ws.onopen=()=>{
+    ws.send(JSON.stringify({type:'connect',host,port}));
+    connected=true; setOnline(true);
+    toast('تم الاتصال بجسر OBD');
+  };
+  ws.onmessage=e=>{
+    let m; try{m=JSON.parse(e.data)}catch(_){return}
+    if(m.type==='status') toast(m.message||'تم تحديث الحالة');
+    if(m.type==='error'){setOnline(false);toast('خطأ: '+m.message)}
+    if(m.type==='pid') updatePID(m.pid,m.value,m.unit);
+    if(m.type==='dtc') renderDTC(m.codes||[]);
+  };
+  ws.onerror=()=>{
+    connected=false; setOnline(false);
+    toast('تعذر الاتصال بالـ Bridge. شغّل bridge/server.js أولاً.');
+  };
+  ws.onclose=()=>{
+    connected=false; polling=false; setOnline(false);
+  };
+}
+
+function sendCommand(cmd){
+  if(!ws || ws.readyState!==1){toast('لا يوجد اتصال بالقطعة');return}
+  ws.send(JSON.stringify({type:'command',cmd}));
+}
+function startLive(){
+  if(!connected){toast('اتصل بالقطعة أولاً');return}
+  if(polling)return;
+  polling=true;
+  pollLoop();
+}
+async function pollLoop(){
+  const cmds=['010C','010D','0105','0111','0110','010B','0142'];
+  for(const c of cmds){
+    if(!polling || !connected)break;
+    sendCommand(c);
+    await new Promise(r=>setTimeout(r,220));
+  }
+  if(polling)setTimeout(pollLoop,700);
+}
+function updatePID(pid,v,u){
+  const map={rpm:'rpm',speed:'speed',temp:'temp',throttle:'throttle',maf:'maf',map:'map',volt:'volt'};
+  const el=$(map[pid]); if(el)el.textContent=Number.isFinite(v)?String(v):v;
+}
+function renderDTC(codes){
+  $('count').textContent=codes.length;
+  if(!codes.length){
+    $('faults').innerHTML='<div class="fault"><div class="desc">لا توجد أكواد أعطال.</div><div class="ok">✓ سليم</div></div>';
+    return;
+  }
+  $('faults').innerHTML=codes.map(c=>`
+    <div class="fault">
+      <div>
+        <div class="desc">${esc(c.description||'كود أعطال OBD-II')}</div>
+        <small style="color:#8299b8">${esc(c.raw||'')}</small>
+      </div>
+      <div class="code">${esc(c.code)}</div>
+    </div>`).join('');
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+
+function scan(){
+  if(!connected){toast('اتصل بالقطعة أولاً');return}
+  sendCommand('03'); toast('جاري قراءة أكواد الأعطال...');
+}
+function liveData(){
+  if(!connected){toast('اتصل بالقطعة أولاً');return}
+  startLive(); toast('تم تشغيل البيانات الحية');
+}
+function clearCodes(){
+  if(!connected){toast('اتصل بالقطعة أولاً');return}
+  if(confirm('هل تريد إرسال أمر مسح الأكواد إلى السيارة؟')){
+    sendCommand('04'); toast('تم إرسال أمر مسح الأكواد');
+    setTimeout(()=>sendCommand('03'),1000);
+  }
+}
+function report(){window.print()}
+
+function demoMode(){
+  demo=true;connected=true;setOnline(true);
+  updatePID('rpm',2340);updatePID('speed',78);updatePID('temp',92);
+  updatePID('throttle',26);updatePID('maf',12.8);updatePID('map',98);updatePID('volt',14.2);
+  renderDTC([
+    {code:'P0300',description:'خلل في الاشتعال العشوائي / متعدد الأسطوانات',raw:'Demo'},
+    {code:'P0420',description:'كفاءة منخفضة في نظام المحول الحفاز',raw:'Demo'}
+  ]);
+  toast('وضع تجريبي — هذه الأرقام ليست من السيارة');
+}
+window.addEventListener('load',()=>{
+  // Keep the original visual preview usable before hardware connection.
+  setTimeout(demoMode,150);
+});
+</script></script>
+</body>
+</html>
